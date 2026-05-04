@@ -6,14 +6,16 @@ import path from "path";
 import runableAnalyticsPlugin from "./vite/plugins/runable-analytics-plugin";
 
 export default defineConfig({
-	plugins: [react(), runableAnalyticsPlugin(), cloudflare(), tailwind()],
-	resolve: {
-		alias: {
-			"@": path.resolve(__dirname, "./src/web"),
-		},
-	},
-	server: {
-		allowedHosts: true,
-		hmr: { overlay: false, }
-	}
+        plugins: [react(), runableAnalyticsPlugin(), cloudflare(), tailwind()],
+        resolve: {
+                alias: {
+                        "@": path.resolve(__dirname, "./src/web"),
+                },
+        },
+        server: {
+                host: "0.0.0.0",
+                port: 5000,
+                allowedHosts: true,
+                hmr: { overlay: false, }
+        }
 });
