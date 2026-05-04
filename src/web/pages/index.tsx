@@ -155,11 +155,27 @@ function GlobalStyles() {
 export default function Index() {
   const [formData, setFormData] = useState({ name: "", email: "", company: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+    setSubmitError("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      if (!res.ok) throw new Error("Failed to send");
+      setSubmitted(true);
+    } catch {
+      setSubmitError("Something went wrong. Please try again or email us directly.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const closeMenu = () => setMenuOpen(false);
@@ -529,13 +545,17 @@ export default function Index() {
                         }}
                       />
                     </div>
-                    <button type="submit" style={{
-                      background: "#192943", color: "#fff", padding: "15px",
+                    {submitError && (
+                      <p style={{ color: "#DC2626", fontSize: "14px", textAlign: "center" }}>{submitError}</p>
+                    )}
+                    <button type="submit" disabled={submitting} style={{
+                      background: submitting ? "#5A7090" : "#192943", color: "#fff", padding: "15px",
                       borderRadius: "10px", fontWeight: 800, fontSize: "clamp(15px,1.6vw,17px)",
-                      border: "none", cursor: "pointer", fontFamily: "Montserrat, sans-serif",
+                      border: "none", cursor: submitting ? "not-allowed" : "pointer",
+                      fontFamily: "Montserrat, sans-serif",
                       WebkitAppearance: "none", touchAction: "manipulation",
                     }}>
-                      Submit Investment Interest →
+                      {submitting ? "Sending…" : "Submit Investment Interest →"}
                     </button>
                   </form>
                 </>
