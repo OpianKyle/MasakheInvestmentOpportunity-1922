@@ -1,0 +1,56 @@
+ubuntu@masakhe-investment:~/MasakheInvestmentOpportunity-1922$ git pull
+bun run build
+
+remote: Enumerating objects: 14, done.
+remote: Counting objects: 100% (14/14), done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 9 (delta 5), reused 9 (delta 5), pack-reused 0 (from 0)
+Unpacking objects: 100% (9/9), 40.27 KiB | 2.37 MiB/s, done.
+From https://github.com/OpianKyle/MasakheInvestmentOpportunity-1922
+   f7e7368..f57b79d  main       -> origin/main
+Updating f7e7368..f57b79d
+Fast-forward
+ .replit                                            |   20 +-
+ ...W64-ssh-i-xneeelo-key-pem-ubu_1777893387315.txt | 3715 ++++++++++++++++++++
+ ...W64-ssh-i-xneeelo-key-pem-ubu_1777893427856.txt | 3715 ++++++++++++++++++++
+ src/server.ts                                      |    6 +-
+ 4 files changed, 7441 insertions(+), 15 deletions(-)
+ create mode 100644 attached_assets/Pasted--User-DESKTOP-PD7JMIO-MINGW64-ssh-i-xneeelo-key-pem-ubu_1777893387315.txt
+ create mode 100644 attached_assets/Pasted--User-DESKTOP-PD7JMIO-MINGW64-ssh-i-xneeelo-key-pem-ubu_1777893427856.txt
+$ vite build
+vite v7.3.1 building client environment for production...
+✓ 57 modules transformed.
+dist/index.html                   0.50 kB │ gzip:  0.35 kB
+dist/assets/index-C0r_pXZu.css   20.72 kB │ gzip:  4.32 kB
+dist/assets/index-nNYs3L4Z.js   236.03 kB │ gzip: 73.09 kB
+✓ built in 3.34s
+ubuntu@masakhe-investment:~/MasakheInvestmentOpportunity-1922$ bun install -g pm2
+bun add v1.3.13 (bf2e2cec)
+
+installed pm2@7.0.1 with binaries:
+ - pm2
+ - pm2-dev
+ - pm2-docker
+ - pm2-runtime
+
+89 packages installed [1.96s]
+ubuntu@masakhe-investment:~/MasakheInvestmentOpportunity-1922$ SMTP_PASSWORD=50664U9Ix702ue pm2 start "bun run start" --name masakhe
+pm2 save
+pm2 startup
+[PM2] Starting /usr/bin/bash in fork_mode (1 instance)
+[PM2] Done.
+┌────┬────────────────────┬──────────┬──────┬───────────┬──────────┬──────────┐
+│ id │ name               │ mode     │ ↺    │ status    │ cpu      │ memory   │
+├────┼────────────────────┼──────────┼──────┼───────────┼──────────┼──────────┤
+│ 0  │ masakhe            │ fork     │ 15   │ errored   │ 0%       │ 0b       │
+│ 1  │ masakhe            │ fork     │ 0    │ online    │ 0%       │ 8.4mb    │
+└────┴────────────────────┴──────────┴──────┴───────────┴──────────┴──────────┘
+[PM2] Saving current process list...
+[PM2] Successfully saved in /home/ubuntu/.pm2/dump.pm2
+[PM2] Init System found: systemd
+[PM2] To setup the Startup Script, copy/paste the following command:
+sudo env PATH=$PATH:/usr/bin /usr/local/lib/node_modules/pm2/bin/pm2 startup systemd -u ubuntu --hp /home/ubuntu
+ubuntu@masakhe-investment:~/MasakheInvestmentOpportunity-1922$ sudo ufw allow 3000
+Rules updated
+Rules updated (v6)
+ubuntu@masakhe-investment:~/MasakheInvestmentOpportunity-1922$
