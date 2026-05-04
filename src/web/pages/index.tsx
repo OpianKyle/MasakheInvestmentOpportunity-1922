@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Link } from "wouter";
 
 const STATS = [
   { value: "171+", label: "Active Subscribers" },
@@ -204,6 +205,7 @@ export default function Index() {
           {["About", "Platform", "Traction", "Pricing", "Invest"].map((item) => (
             <a key={item} href={`#${item.toLowerCase()}`} style={{ color: "rgba(255,255,255,0.7)", textDecoration: "none", fontSize: "15px", fontWeight: 500 }}>{item}</a>
           ))}
+          <Link href="/contact" style={{ color: "rgba(255,255,255,0.7)", textDecoration: "none", fontSize: "15px", fontWeight: 500 }}>Contact</Link>
         </div>
 
         <a href="#invest" className="nav-cta" style={{
