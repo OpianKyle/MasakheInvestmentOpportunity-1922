@@ -1,0 +1,43 @@
+ubuntu@masakhe-investment:~/MasakheInvestmentOpportunity-1922$ sudo npm install -g pm2
+# Start the app (serves frontend + handles API on port 80)
+pm2 start "bun run start" --name masakhe
+pm2 save
+pm2 startup
+sudo: npm: command not found
+Command 'pm2' not found, did you mean:
+  command 'wm2' from deb wm2 (4+svn20090216-4build1)
+  command 'pms' from deb pms (0.42-1build4)
+  command 'pmi' from deb powermanagement-interface (0.3.21)
+  command 'pm' from deb powerman (2.3.5-1build2)
+  command 'pmc' from deb linuxptp (3.1.1-3)
+  command 'pom2' from deb libpod-pom-perl (2.01-3)
+  command 'pmg' from deb python3-pymatgen (2022.0.17+dfsg1-1build1)
+  command 'gm2' from deb gm2 (4:11.2.0-1ubuntu1)
+  command 'pmw' from deb pmw (1:4.50-1)
+  command 'tpm2' from deb tpm2-tools (5.2-1build1)
+Try: sudo apt install <deb name>
+Command 'pm2' not found, did you mean:
+  command 'pm' from deb powerman (2.3.5-1build2)
+  command 'wm2' from deb wm2 (4+svn20090216-4build1)
+  command 'pmc' from deb linuxptp (3.1.1-3)
+  command 'pom2' from deb libpod-pom-perl (2.01-3)
+  command 'tpm2' from deb tpm2-tools (5.2-1build1)
+  command 'pmg' from deb python3-pymatgen (2022.0.17+dfsg1-1build1)
+  command 'gm2' from deb gm2 (4:11.2.0-1ubuntu1)
+  command 'pms' from deb pms (0.42-1build4)
+  command 'pmi' from deb powermanagement-interface (0.3.21)
+  command 'pmw' from deb pmw (1:4.50-1)
+Try: sudo apt install <deb name>
+Command 'pm2' not found, did you mean:
+  command 'pm' from deb powerman (2.3.5-1build2)
+  command 'gm2' from deb gm2 (4:11.2.0-1ubuntu1)
+  command 'pmc' from deb linuxptp (3.1.1-3)
+  command 'wm2' from deb wm2 (4+svn20090216-4build1)
+  command 'pom2' from deb libpod-pom-perl (2.01-3)
+  command 'pmg' from deb python3-pymatgen (2022.0.17+dfsg1-1build1)
+  command 'pmi' from deb powermanagement-interface (0.3.21)
+  command 'tpm2' from deb tpm2-tools (5.2-1build1)
+  command 'pmw' from deb pmw (1:4.50-1)
+  command 'pms' from deb pms (0.42-1build4)
+Try: sudo apt install <deb name>
+ubuntu@masakhe-investment:~/MasakheInvestmentOpportunity-1922$
