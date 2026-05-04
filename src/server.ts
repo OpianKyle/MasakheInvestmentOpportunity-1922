@@ -68,11 +68,11 @@ app.post("/api/contact", async (c) => {
 });
 
 if (isProd) {
-  app.use("/*", serveStatic({ root: "./dist" }));
-  app.get("/*", serveStatic({ path: "./dist/index.html" }));
+  app.use("/*", serveStatic({ root: "./dist/client" }));
+  app.get("/*", serveStatic({ path: "./dist/client/index.html" }));
 }
 
-const port = isProd ? (Number(process.env.PORT) || 80) : 3001;
+const port = isProd ? (Number(process.env.PORT) || 3000) : 3001;
 console.log(`API server running on http://localhost:${port} [${isProd ? "production" : "development"}]`);
 
 export default {
