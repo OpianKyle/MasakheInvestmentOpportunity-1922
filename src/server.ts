@@ -1,14 +1,16 @@
 import { Hono } from "hono";
 import { cors } from "hono/cors";
+import { serveStatic } from "hono/bun";
 import nodemailer from "nodemailer";
 
-const app = new Hono().basePath("api");
+const isProd = process.env.NODE_ENV === "production";
+const app = new Hono();
 
-app.use(cors({ origin: "*" }));
+app.use("*", cors({ origin: "*" }));
 
-app.get("/ping", (c) => c.json({ message: `Pong! ${Date.now()}` }));
+app.get("/api/ping", (c) => c.json({ message: `Pong! ${Date.now()}` }));
 
-app.post("/contact", async (c) => {
+app.post("/api/contact", async (c) => {
   try {
     const body = await c.req.json();
     const { name, email, company, message } = body;
@@ -65,8 +67,13 @@ app.post("/contact", async (c) => {
   }
 });
 
-const port = 3001;
-console.log(`API server running on http://localhost:${port}`);
+if (isProd) {
+  app.use("/*", serveStatic({ root: "./dist" }));
+  app.get("/*", serveStatic({ path: "./dist/index.html" }));
+}
+
+const port = isProd ? (Number(process.env.PORT) || 80) : 3001;
+console.log(`API server running on http://localhost:${port} [${isProd ? "production" : "development"}]`);
 
 export default {
   port,
